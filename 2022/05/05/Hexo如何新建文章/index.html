@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"huangpiao.tech","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Hexo文章管理1.创建一个md文件md文件也就是Markdown文件，通过以下命令来创建： 12$ hexo new &lt;title&gt;$ hexo new &quot;我的第一篇文章&quot;  2.布局（layout） 创建md文件时，我们可以指定布局  12$ hexo new [layout] &lt;title&gt;$ hexo new page &quot;我的页面&amp;qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo如何写文章">
+<meta property="og:url" content="https://huangpiao.tech/2022/05/05/Hexo%E5%A6%82%E4%BD%95%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0/index.html">
+<meta property="og:site_name" content="CodeningBlog">
+<meta property="og:description" content="Hexo文章管理1.创建一个md文件md文件也就是Markdown文件，通过以下命令来创建： 12$ hexo new &lt;title&gt;$ hexo new &quot;我的第一篇文章&quot;  2.布局（layout） 创建md文件时，我们可以指定布局  12$ hexo new [layout] &lt;title&gt;$ hexo new page &quot;我的页面&amp;qu">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-2683cfb7e862381166e609ef37210a99_720w.png">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-81c1aa7b55f1ae6767b3563127a22156_720w.jpg">
+<meta property="article:published_time" content="2022-05-05T02:50:53.000Z">
+<meta property="article:modified_time" content="2022-05-05T09:04:46.924Z">
+<meta property="article:author" content="无名程序员">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic2.zhimg.com/80/v2-2683cfb7e862381166e609ef37210a99_720w.png">
+
+<link rel="canonical" href="https://huangpiao.tech/2022/05/05/Hexo%E5%A6%82%E4%BD%95%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hexo如何写文章 | CodeningBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CodeningBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活中的点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-主页">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://huangpiao.tech/2022/05/05/Hexo%E5%A6%82%E4%BD%95%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.fif">
+      <meta itemprop="name" content="无名程序员">
+      <meta itemprop="description" content="梦想成为高手的普通人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeningBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo如何写文章
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-05 10:50:53 / 修改时间：17:04:46" itemprop="dateCreated datePublished" datetime="2022-05-05T10:50:53+08:00">2022-05-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Hexo文章管理"><a href="#Hexo文章管理" class="headerlink" title="Hexo文章管理"></a>Hexo文章管理</h2><h3 id="1-创建一个md文件"><a href="#1-创建一个md文件" class="headerlink" title="1.创建一个md文件"></a>1.创建一个md文件</h3><p>md文件也就是<code>Markdown</code>文件，通过以下命令来创建：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &lt;title&gt;</span><br><span class="line">$ hexo new &quot;我的第一篇文章&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-布局（layout）"><a href="#2-布局（layout）" class="headerlink" title="2.布局（layout）"></a>2.布局（layout）</h3><ul>
+<li>创建md文件时，我们可以指定布局</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br><span class="line">$ hexo new page &quot;我的页面&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>布局有三种：<code>post</code>（文章）、<code>draft</code>（草稿）、<code>page</code>（页面）</li>
+</ul>
+<p>在新建文件时，Hexo 会根据 <code>scaffolds</code> 文件夹内相对应的文件（可以理解为模板）来建立md文件：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-2683cfb7e862381166e609ef37210a99_720w.png" alt="img"></p>
+<ul>
+<li>如果没有指定布局类型，则为默认布局<code>post</code>，可以在站点配置文件修改 <code>default_layout</code> 参数来修改默认布局。</li>
+<li>当我们创建不同布局的md文件时，它们会存储在不同路径：</li>
+</ul>
+<p><img src="https://pic3.zhimg.com/80/v2-81c1aa7b55f1ae6767b3563127a22156_720w.jpg" alt="img"></p>
+<blockquote>
+<p>对于独立页面来说，Hexo 会创建一个以标题为名字的目录，并在目录中放置一个 <code>index.md</code> 文件，页面布局顾名思义就是用来DIY我们博客页面的。</p>
+</blockquote>
+<h3 id="3-草稿（draft）"><a href="#3-草稿（draft）" class="headerlink" title="3.草稿（draft）"></a>3.草稿（draft）</h3><p><code>draft</code>这种布局在建立时会被保存到 <code>source/_drafts</code> 文件夹中，但不会显示在页面上，如果我们不想某一篇文章显示在页面上，那么就可以把它移动到<code>_drafts</code>文件夹中。</p>
+<ul>
+<li>我们可在启动服务器时加上 <code>--draft</code> 参数来查看草稿。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server --draft</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>还可以在站点配置文件中把 <code>render_drafts</code> 参数设为 <code>true</code> 来预览草稿。</li>
+<li>我们可以通过 <code>publish</code> 命令将草稿发布文章或者页面，它将会被移动到指定的文件夹。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-Front-matter"><a href="#4-Front-matter" class="headerlink" title="4.Front-matter"></a>4.Front-matter</h3><p>当我们创建一个md文件后，打开后会看到一些内容，这些称为<code>Front-matter</code>，它是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量，举例来说：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Hello</span> <span class="string">World</span> <span class="comment"># 标题就是我们上面创建的时候指定的名字</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2013</span><span class="string">/7/13</span> <span class="number">20</span><span class="string">:46:25</span> <span class="comment"># 文件创建的时间</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在<code>Typora</code>中我们在md文件的首行（必须是第一行）输入<code>---</code> ，然后按回车就可以插入<code>Front-matter</code>了。</p>
+</blockquote>
+<p>Front-matter预定义参数</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">layout  布局  默认为true，如果你不想你的文章被处理，可以设置为false</span><br><span class="line">title  标题  标题会显示在最上方居中位置     </span><br><span class="line">date  建立日期    如果不指定则为默认值-文件创建日期，可以自定义。</span><br><span class="line">update  更新日期  如果不指定则为默认值-文件修改后重新生成静态文件的日期。</span><br><span class="line">comments  是否开启文章的评论功能 默认值为true</span><br><span class="line">tags  标签（不适用于页面page布局）</span><br><span class="line">categoreies  分类（不适用于页面page布局）</span><br><span class="line">permalink  覆盖文章网址</span><br><span class="line">keywords  仅用于 meta 标签和 Open Graph 的关键词（不推荐使用）</span><br></pre></td></tr></table></figure>
+
+<h3 id="为文章添加分类与标签"><a href="#为文章添加分类与标签" class="headerlink" title="为文章添加分类与标签"></a>为文章添加分类与标签</h3><p>只有文章（post布局）支持分类和标签，需要在<code>Front-matter</code>中设置。分类有层级关系，标签没有。</p>
+<p>举个例子：<br>1）下面文章它的标签是：Hexo、博客<br>2）分类是： 个人博客 &gt; Hexo博客<br>3）“Hexo博客” 是 “个人博客” 的子分类</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">个人博客（第一层级）</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Hexo博客（第二层级）</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Hexo</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">博客</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="为文章添加多个分类"><a href="#为文章添加多个分类" class="headerlink" title="为文章添加多个分类"></a>为文章添加多个分类</h3><p>1）下面文章属于三个分类：日常 &gt; 生活，日常 &gt; 随想，日记<br>2）其中生活、随想为日常的子分类，日常和日记为同级分类</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">日常</span>, <span class="string">生活</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">日常</span>, <span class="string">随想</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">日记</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
+<li><strong>清除缓存：</strong><code>hexo clean</code></li>
+<li><strong>生成静态文件：</strong><code>hexo generate</code>可简写为 <code>hexo g</code></li>
+<li><strong>启动服务器：</strong><code>hexo server</code>或者 <code>hexo s</code> 常用参数：<code>-p（--port）</code>重设端口</li>
+<li><strong>部署：</strong><code>hexo deploy</code>可简写为<code>hexo d</code>，用于将网站部署到服务器上。（暂时用不到，目前都是在本地，后面我们将博客托管到<code>GitHub Pages</code>或<code>Gitee Pages</code>时才会用到此命令）<br>常用参数：<code>-g（--generate）</code>，<code>hexo d -g</code>部署前预先生成静态文件，等同于 <code>hexo g -d</code></li>
+</ul>
+<p><strong>一般发布文章或者修改博客后需要这些操作：</strong>清除缓存&gt;生成静态文件&gt;启动服务器，测试没问题后再部署。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们可以写成一条命令</span></span><br><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>更多细节请查看：<a href="https://link.zhihu.com/?target=https://hexo.bootcss.com/docs/">Hexo官方文档</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>无名程序员
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://huangpiao.tech/2022/05/05/Hexo%E5%A6%82%E4%BD%95%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0/" title="Hexo如何写文章">https://huangpiao.tech/2022/05/05/Hexo如何新建文章/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+      </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i># Hexo</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87blog/" rel="next" title="我的第一篇blog">
+      我的第一篇blog <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo%E6%96%87%E7%AB%A0%E7%AE%A1%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">Hexo文章管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAmd%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">1.创建一个md文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B8%83%E5%B1%80%EF%BC%88layout%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">2.布局（layout）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%8D%89%E7%A8%BF%EF%BC%88draft%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">3.草稿（draft）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Front-matter"><span class="nav-number">1.4.</span> <span class="nav-text">4.Front-matter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E4%B8%8E%E6%A0%87%E7%AD%BE"><span class="nav-number">1.5.</span> <span class="nav-text">为文章添加分类与标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E5%A4%9A%E4%B8%AA%E5%88%86%E7%B1%BB"><span class="nav-number">1.6.</span> <span class="nav-text">为文章添加多个分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.</span> <span class="nav-text">常用命令</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无名程序员"
+      src="/images/avatar.fif">
+  <p class="site-author-name" itemprop="name">无名程序员</p>
+  <div class="site-description" itemprop="description">梦想成为高手的普通人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/codening99" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;codening99" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">codening</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">2k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2 分钟</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
