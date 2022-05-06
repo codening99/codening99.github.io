@@ -31,12 +31,12 @@
       </tags>
   </entry>
   <entry>
-    <title>解决Hexo博客不显示的一种方法</title>
-    <url>/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
+    <title>解决Hexo博客不显示图片的一种方法</title>
+    <url>/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h2 id="1-修改blog配置"><a href="#1-修改blog配置" class="headerlink" title="1.修改blog配置"></a>1.修改blog配置</h2><p>修改博客根目录中<code>_config.yml</code>文件的配置项<code>post_asset_folder</code>为<code>true</code>：</p>
 <p><code>post_asset_folder: true</code></p>
 <p>完成此设置后，当你通过<code>hexo new 文件名</code>新建博客后，会产生一个和文件同名的文件夹。</p>
-<p><img src="/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/13713347-8e33caf1f84c415b.png" alt="img"></p>
+<p><img src="/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/13713347-8e33caf1f84c415b.png" alt="img"></p>
 <h2 id="2-下载插件"><a href="#2-下载插件" class="headerlink" title="2.下载插件"></a>2.下载插件</h2><p>在博客根目录中下使用npm安装插件：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
 
@@ -45,7 +45,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">![示例](./解决Hexo博客不显示图片的一种方法/1580801930220.png)</span><br></pre></td></tr></table></figure>
 
 <p>使用命令<code>hexo s</code>开启服务，若无报错在本地可以看到图片在博客中正确显示。</p>
-<p>相关链接: <a href="https://www.jianshu.com/p/ea78bdd0551f/">解决Hexo博客不显示图片的一种方法</a></p>
+<p>相关链接: [解决Hexo博客不显示图片的一种方法](</p>
 ]]></content>
       <categories>
         <category>Hexo</category>
