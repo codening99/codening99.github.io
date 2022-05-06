@@ -1,75 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo如何写文章</title>
-    <url>/2022/05/05/Hexo%E5%A6%82%E4%BD%95%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<h2 id="Hexo文章管理"><a href="#Hexo文章管理" class="headerlink" title="Hexo文章管理"></a>Hexo文章管理</h2><h3 id="1-创建一个md文件"><a href="#1-创建一个md文件" class="headerlink" title="1.创建一个md文件"></a>1.创建一个md文件</h3><p>md文件也就是<code>Markdown</code>文件，通过以下命令来创建：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ hexo new &lt;title&gt;</span><br><span class="line">$ hexo new &quot;我的第一篇文章&quot;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-布局（layout）"><a href="#2-布局（layout）" class="headerlink" title="2.布局（layout）"></a>2.布局（layout）</h3><ul>
-<li>创建md文件时，我们可以指定布局</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br><span class="line">$ hexo new page &quot;我的页面&quot;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>布局有三种：<code>post</code>（文章）、<code>draft</code>（草稿）、<code>page</code>（页面）</li>
-</ul>
-<p>在新建文件时，Hexo 会根据 <code>scaffolds</code> 文件夹内相对应的文件（可以理解为模板）来建立md文件：</p>
-<p><img src="https://pic2.zhimg.com/80/v2-2683cfb7e862381166e609ef37210a99_720w.png" alt="img"></p>
-<ul>
-<li>如果没有指定布局类型，则为默认布局<code>post</code>，可以在站点配置文件修改 <code>default_layout</code> 参数来修改默认布局。</li>
-<li>当我们创建不同布局的md文件时，它们会存储在不同路径：</li>
-</ul>
-<p><img src="https://pic3.zhimg.com/80/v2-81c1aa7b55f1ae6767b3563127a22156_720w.jpg" alt="img"></p>
-<blockquote>
-<p>对于独立页面来说，Hexo 会创建一个以标题为名字的目录，并在目录中放置一个 <code>index.md</code> 文件，页面布局顾名思义就是用来DIY我们博客页面的。</p>
+    <title>常用工具</title>
+    <url>/2022/05/06/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<h2 id="1-一言语句接口"><a href="#1-一言语句接口" class="headerlink" title="1.一言语句接口"></a>1.一言语句接口</h2><h3 id="简介"><a href="#简介" class="headerlink" title="#简介"></a>#简介</h3><blockquote>
+<p>动漫也好、小说也好、网络也好，不论在哪里，我们总会看到有那么一两个句子能穿透你的心。我们把这些句子汇聚起来，形成一言网络，以传递更多的感动。如果可以，我们希望我们没有停止服务的那一天。</p>
+<p>简单来说，一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。 或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。</p>
 </blockquote>
-<h3 id="3-草稿（draft）"><a href="#3-草稿（draft）" class="headerlink" title="3.草稿（draft）"></a>3.草稿（draft）</h3><p><code>draft</code>这种布局在建立时会被保存到 <code>source/_drafts</code> 文件夹中，但不会显示在页面上，如果我们不想某一篇文章显示在页面上，那么就可以把它移动到<code>_drafts</code>文件夹中。</p>
-<ul>
-<li>我们可在启动服务器时加上 <code>--draft</code> 参数来查看草稿。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo server --draft</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>还可以在站点配置文件中把 <code>render_drafts</code> 参数设为 <code>true</code> 来预览草稿。</li>
-<li>我们可以通过 <code>publish</code> 命令将草稿发布文章或者页面，它将会被移动到指定的文件夹。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo publish [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-Front-matter"><a href="#4-Front-matter" class="headerlink" title="4.Front-matter"></a>4.Front-matter</h3><p>当我们创建一个md文件后，打开后会看到一些内容，这些称为<code>Front-matter</code>，它是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量，举例来说：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Hello</span> <span class="string">World</span> <span class="comment"># 标题就是我们上面创建的时候指定的名字</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2013</span><span class="string">/7/13</span> <span class="number">20</span><span class="string">:46:25</span> <span class="comment"># 文件创建的时间</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在<code>Typora</code>中我们在md文件的首行（必须是第一行）输入<code>---</code> ，然后按回车就可以插入<code>Front-matter</code>了。</p>
+<p>相关链接: <a href="https://developer.hitokoto.cn/">一言</a></p>
+<hr>
+<h2 id="2-maven仓库"><a href="#2-maven仓库" class="headerlink" title="2.maven仓库"></a>2.maven仓库</h2><p>相关链接: <a href="https://mvnrepository.com/">mvnrepository</a></p>
+<hr>
+<h2 id="3-OI-WIKI"><a href="#3-OI-WIKI" class="headerlink" title="3.OI WIKI"></a>3.OI WIKI</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="#简介"></a>#简介</h3><blockquote>
+<p><strong>OI</strong>（Olympiad in Informatics，信息学奥林匹克竞赛）在中国起源于 1984 年，是五大高中学科竞赛之一。</p>
+<p><strong>ICPC</strong>（International Collegiate Programming Contest，国际大学生程序设计竞赛）由 ICPC 基金会（ICPC Foundation）举办，是最具影响力的大学生计算机竞赛。由于以前 ACM 赞助这个竞赛，也有很多人习惯叫它 ACM 竞赛。</p>
+<p><strong>OI Wiki</strong> 致力于成为一个免费开放且持续更新的 <strong>编程竞赛（competitive programming）</strong> 知识整合站点，大家可以在这里获取与竞赛相关的、有趣又实用的知识。我们为大家准备了竞赛中的基础知识、常见题型、解题思路以及常用工具等内容，帮助大家更快速深入地学习编程竞赛中涉及到的知识。</p>
 </blockquote>
-<p>Front-matter预定义参数</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">layout  布局  默认为true，如果你不想你的文章被处理，可以设置为false</span><br><span class="line">title  标题  标题会显示在最上方居中位置     </span><br><span class="line">date  建立日期    如果不指定则为默认值-文件创建日期，可以自定义。</span><br><span class="line">update  更新日期  如果不指定则为默认值-文件修改后重新生成静态文件的日期。</span><br><span class="line">comments  是否开启文章的评论功能 默认值为true</span><br><span class="line">tags  标签（不适用于页面page布局）</span><br><span class="line">categoreies  分类（不适用于页面page布局）</span><br><span class="line">permalink  覆盖文章网址</span><br><span class="line">keywords  仅用于 meta 标签和 Open Graph 的关键词（不推荐使用）</span><br></pre></td></tr></table></figure>
-
-<h3 id="为文章添加分类与标签"><a href="#为文章添加分类与标签" class="headerlink" title="为文章添加分类与标签"></a>为文章添加分类与标签</h3><p>只有文章（post布局）支持分类和标签，需要在<code>Front-matter</code>中设置。分类有层级关系，标签没有。</p>
-<p>举个例子：<br>1）下面文章它的标签是：Hexo、博客<br>2）分类是： 个人博客 &gt; Hexo博客<br>3）“Hexo博客” 是 “个人博客” 的子分类</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">个人博客（第一层级）</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Hexo博客（第二层级）</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Hexo</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">博客</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="为文章添加多个分类"><a href="#为文章添加多个分类" class="headerlink" title="为文章添加多个分类"></a>为文章添加多个分类</h3><p>1）下面文章属于三个分类：日常 &gt; 生活，日常 &gt; 随想，日记<br>2）其中生活、随想为日常的子分类，日常和日记为同级分类</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">日常</span>, <span class="string">生活</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">日常</span>, <span class="string">随想</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">日记</span>]</span><br></pre></td></tr></table></figure>
-
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
-<li><strong>清除缓存：</strong><code>hexo clean</code></li>
-<li><strong>生成静态文件：</strong><code>hexo generate</code>可简写为 <code>hexo g</code></li>
-<li><strong>启动服务器：</strong><code>hexo server</code>或者 <code>hexo s</code> 常用参数：<code>-p（--port）</code>重设端口</li>
-<li><strong>部署：</strong><code>hexo deploy</code>可简写为<code>hexo d</code>，用于将网站部署到服务器上。（暂时用不到，目前都是在本地，后面我们将博客托管到<code>GitHub Pages</code>或<code>Gitee Pages</code>时才会用到此命令）<br>常用参数：<code>-g（--generate）</code>，<code>hexo d -g</code>部署前预先生成静态文件，等同于 <code>hexo g -d</code></li>
-</ul>
-<p><strong>一般发布文章或者修改博客后需要这些操作：</strong>清除缓存&gt;生成静态文件&gt;启动服务器，测试没问题后再部署。</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 我们可以写成一条命令</span></span><br><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>更多细节请查看：<a href="https://link.zhihu.com/?target=https://hexo.bootcss.com/docs/">Hexo官方文档</a></p>
+<p>相关链接: <a href="https://oi-wiki.org/">OI WIKI</a></p>
+<hr>
+<h2 id="4-seo综合查询"><a href="#4-seo综合查询" class="headerlink" title="4.seo综合查询"></a>4.seo综合查询</h2><h3 id="简介-2"><a href="#简介-2" class="headerlink" title="#简介"></a>#简介</h3><blockquote>
+<p>seo综合查询可以查到该网站在各大搜索引擎的信息,包括网站权重,预估流量,收录,反链及关键词排名等。</p>
 </blockquote>
+<p>相关链接: [seo]](<a href="https://seo.chinaz.com/">https://seo.chinaz.com/</a>)</p>
 ]]></content>
       <categories>
-        <category>Hexo</category>
+        <category>tool</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
+        <tag>tool</tag>
       </tags>
   </entry>
   <entry>
@@ -92,8 +50,8 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Local Search</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Dependencies: https://github.com/theme-next/hexo-generator-searchdb</span></span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">If auto, trigger search by changing input.</span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">If manual, trigger search by pressing enter key or search button.</span></span><br><span class="line">  trigger: auto</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Show top n results per article, show all results by setting to -1</span></span><br><span class="line">  top_n_per_article: 1</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Unescape html strings to the readable one.</span></span><br><span class="line">  unescape: false</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Preload the search data when the page loads.</span></span><br><span class="line">  preload: true</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Swiftype Search API Key</span></span><br><span class="line">swiftype_key:</span><br></pre></td></tr></table></figure>
 
 <p>然后我们就可以在菜单栏看到一个搜索按钮，点击就可以进行对你的博客内容进行搜索</p>
-<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134304869.png" alt="image-20220506134304869"></p>
-<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134320955.png" alt="image-20220506134320955"></p>
+<p><img src="/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134304869.png" alt="image-20220506134304869"></p>
+<p><img src="/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134320955.png" alt="image-20220506134320955"></p>
 <hr>
 <h2 id="2-爬取豆瓣账号数据"><a href="#2-爬取豆瓣账号数据" class="headerlink" title="2.爬取豆瓣账号数据"></a>2.爬取豆瓣账号数据</h2><p>我们可以爬取自己的豆瓣账号数据从而可以分享你的书籍和电影<br>具体的使用方法如下：</p>
 <ul>
@@ -128,46 +86,37 @@
 </ul>
 <hr>
 <h2 id="3-不蒜子统计"><a href="#3-不蒜子统计" class="headerlink" title="3.不蒜子统计"></a>3.不蒜子统计</h2><p><code>next</code> 主题新版本已经为我们提供了卜算子接口，用于统计站点的访问人数和总访问量，效果如下所示：</p>
-<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506135509439.png" alt="image-20220506135509439"></p>
+<p><img src="/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506135509439.png" alt="image-20220506135509439"></p>
 <p>由于已经提供了接口，所以配置就很方便，具体的配置就变得很简单，只需要修改 <code>busuanzi</code> 部分：</p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment">#是否开启不蒜子统计功能</span></span><br><span class="line"><span class="attr">total_visitors:</span> <span class="literal">true</span> <span class="comment">#是否统计总访客数</span></span><br><span class="line"><span class="attr">total_visitors_icon:</span> <span class="string">user</span> <span class="comment">#访客数图标为人像</span></span><br><span class="line"><span class="attr">total_views:</span> <span class="literal">true</span> <span class="comment">#是否同级总访问数</span></span><br><span class="line"><span class="attr">total_views_icon:</span> <span class="string">eye</span> <span class="comment">#访问数图标为眼睛</span></span><br><span class="line"><span class="attr">post_views:</span> <span class="literal">true</span> <span class="comment">#是否统计文章访问数</span></span><br><span class="line"><span class="attr">post_views_icon:</span> <span class="string">eye</span> <span class="comment">#访问数图标为眼睛</span></span><br></pre></td></tr></table></figure>
 
 <p>相关链接 <a href="http://busuanzi.ibruce.info/">卜蒜子</a></p>
+<hr>
+<h2 id="4-设置文章置顶"><a href="#4-设置文章置顶" class="headerlink" title="4.设置文章置顶"></a>4.设置文章置顶</h2><p><a href="https://so.csdn.net/so/search?q=Hexo&spm=1001.2101.3001.7020">Hexo</a> <code>Next</code>主题中，首页文章默认排序方式是按照时间逆序来排的，越新的文章排在越前面。当我们想让访客一进来就能看到推荐的文章时，可以将这些文章置顶。</p>
+<ol>
+<li>安装插件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cnpm uninstall hexo-generator-index --save</span><br><span class="line">cnpm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>设置文章置顶</li>
+</ol>
+<p>在需要置顶的文章的 Front-matter 中加上<code>top: true</code>即可，比如：</p>
+<p><img src="/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506143312204.png" alt="image-20220506143312204"></p>
+<ol start="3">
+<li>添加置顶图标</li>
+</ol>
+<p>打开 <code>/blog/themes/hexo-theme-next/layout/_macro</code> 目录下的 <code>post.swig</code> 文件，在<code>&lt;div class=&quot;post-meta&quot;&gt;</code>标签中插入如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if post.top %&#125;</span><br><span class="line">  &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt;</span><br><span class="line">  &lt;font color=7D26CD&gt;置顶&lt;/font&gt;</span><br><span class="line">  &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重新生成部署，效果如下：</p>
+<p><img src="/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506143404112.png" alt="image-20220506143404112"></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
       </categories>
       <tags>
         <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常用工具</title>
-    <url>/2022/05/06/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<h2 id="1-一言语句接口"><a href="#1-一言语句接口" class="headerlink" title="1.一言语句接口"></a>1.一言语句接口</h2><h3 id="简介"><a href="#简介" class="headerlink" title="#简介"></a>#简介</h3><blockquote>
-<p>动漫也好、小说也好、网络也好，不论在哪里，我们总会看到有那么一两个句子能穿透你的心。我们把这些句子汇聚起来，形成一言网络，以传递更多的感动。如果可以，我们希望我们没有停止服务的那一天。</p>
-<p>简单来说，一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。 或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。</p>
-</blockquote>
-<p>相关链接: <a href="https://developer.hitokoto.cn/">一言</a></p>
-<hr>
-<h2 id="2-maven仓库"><a href="#2-maven仓库" class="headerlink" title="2.maven仓库"></a>2.maven仓库</h2><p>相关链接: <a href="https://mvnrepository.com/">mvnrepository</a></p>
-<hr>
-<h2 id="3-OI-WIKI"><a href="#3-OI-WIKI" class="headerlink" title="3.OI WIKI"></a>3.OI WIKI</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="#简介"></a>#简介</h3><blockquote>
-<p><strong>OI</strong>（Olympiad in Informatics，信息学奥林匹克竞赛）在中国起源于 1984 年，是五大高中学科竞赛之一。</p>
-<p><strong>ICPC</strong>（International Collegiate Programming Contest，国际大学生程序设计竞赛）由 ICPC 基金会（ICPC Foundation）举办，是最具影响力的大学生计算机竞赛。由于以前 ACM 赞助这个竞赛，也有很多人习惯叫它 ACM 竞赛。</p>
-<p><strong>OI Wiki</strong> 致力于成为一个免费开放且持续更新的 <strong>编程竞赛（competitive programming）</strong> 知识整合站点，大家可以在这里获取与竞赛相关的、有趣又实用的知识。我们为大家准备了竞赛中的基础知识、常见题型、解题思路以及常用工具等内容，帮助大家更快速深入地学习编程竞赛中涉及到的知识。</p>
-</blockquote>
-<p>相关链接: <a href="https://oi-wiki.org/">OI WIKI</a></p>
-<h2 id="4-seo综合查询"><a href="#4-seo综合查询" class="headerlink" title="4.seo综合查询"></a>4.seo综合查询</h2><h3 id="简介-2"><a href="#简介-2" class="headerlink" title="#简介"></a>#简介</h3><blockquote>
-<p>seo综合查询可以查到该网站在各大搜索引擎的信息,包括网站权重,预估流量,收录,反链及关键词排名等。</p>
-</blockquote>
-<p>相关链接: [seo]](<a href="https://seo.chinaz.com/">https://seo.chinaz.com/</a>)</p>
-]]></content>
-      <categories>
-        <category>tool</category>
-      </categories>
-      <tags>
-        <tag>tool</tag>
       </tags>
   </entry>
   <entry>
@@ -185,7 +134,7 @@
 <h3 id="2-浮点类型float"><a href="#2-浮点类型float" class="headerlink" title="2.浮点类型float"></a>2.浮点类型float</h3><blockquote>
 <p>使用浮点数进行计算时，可能会出现小数位数不确定的情况(个别情况) 如下图：</p>
 </blockquote>
-<p><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220422150101564-1651756443116.png" alt="image-20220422150101564"></p>
+<p><img src="/.io//05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220422150101564-1651756443116.png" alt="image-20220422150101564"></p>
 <blockquote>
 <p>解决办法：导入模块decimal</p>
 </blockquote>
@@ -218,7 +167,7 @@
 </blockquote>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line">age = <span class="number">12</span></span><br><span class="line"><span class="comment">#不进行转化</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;我是&#x27;</span> + name + <span class="string">&#x27;今年&#x27;</span> + age + <span class="string">&#x27;岁&#x27;</span>)</span><br><span class="line"><span class="comment">#出现错误 TypeError: can only concatenate str (not &quot;int&quot;) to str</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#进行转换</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;我是&#x27;</span> + name + <span class="string">&#x27;今年&#x27;</span> + (<span class="built_in">str</span>)age + <span class="string">&#x27;岁&#x27;</span>) <span class="comment">#将int类型通过str()转化为string类型</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220422161317962-1651756443117.png" alt="image-20220422161317962"></p>
+<p><img src="/.io//05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220422161317962-1651756443117.png" alt="image-20220422161317962"></p>
 <hr>
 <h2 id="二、注释"><a href="#二、注释" class="headerlink" title="二、注释"></a>二、注释</h2><blockquote>
 <p><strong>1.单行注释：#</strong></p>
@@ -270,7 +219,7 @@
 <blockquote>
 <p><strong>①整除：向下取整</strong></p>
 </blockquote>
-<img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220505211614344.png" alt="image-20220505211614344" style="zoom:67%;">
+<img src="/.io//image-20220505211614344.png" alt="image-20220505211614344" style="zoom:67%;">
 
 
 
@@ -281,7 +230,7 @@
 <blockquote>
 <p><strong>②取余：遵循公式 余数&#x3D;被除数-除数*商</strong></p>
 </blockquote>
-<img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220422184030349.png" alt="image-20220422184030349" style="zoom:80%;">
+<img src="/.io//image-20220422184030349.png" alt="image-20220422184030349" style="zoom:80%;">
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">9</span> % -<span class="number">4</span>)   <span class="comment">#根据公式  余数=9-(-4)*(-3)=-3</span></span><br><span class="line"><span class="built_in">print</span>(-<span class="number">9</span> % <span class="number">4</span>)   <span class="comment">#根据公式  余数=(-9)-4*(-3)=3</span></span><br></pre></td></tr></table></figure>
 
@@ -356,7 +305,7 @@
 <h3 id="6-运算符的优先级"><a href="#6-运算符的优先级" class="headerlink" title="6.运算符的优先级"></a>6.运算符的优先级</h3><blockquote>
 <p><strong>算术运算 -&gt; 位运算 -&gt; 比较运算符 -&gt; 布尔运算 -&gt; 赋值运算</strong></p>
 </blockquote>
-<img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220422223209458.png" alt="image-20220422223209458" style="zoom:80%;">
+<img src="/.io//image-20220422223209458.png" alt="image-20220422223209458" style="zoom:80%;">
 
 
 
@@ -420,7 +369,7 @@
 
 
 
-<h3 id="5-内置函数range"><a href="#5-内置函数range" class="headerlink" title="5.内置函数range()"></a>5.内置函数range()</h3><p><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220423133407806.png" alt="image-20220423133407806"></p>
+<h3 id="5-内置函数range"><a href="#5-内置函数range" class="headerlink" title="5.内置函数range()"></a>5.内置函数range()</h3><p><img src="/.io//05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220423133407806.png" alt="image-20220423133407806"></p>
 <blockquote>
 <p>整数序列不包括stop值</p>
 </blockquote>
@@ -481,7 +430,7 @@
 
 
 
-<h3 id="8-else语句"><a href="#8-else语句" class="headerlink" title="8.else语句"></a>8.else语句</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220423225728411.png" alt="image-20220423225728411" style="zoom:80%;">
+<h3 id="8-else语句"><a href="#8-else语句" class="headerlink" title="8.else语句"></a>8.else语句</h3><img src="/.io//image-20220423225728411.png" alt="image-20220423225728411" style="zoom:80%;">
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">    password = <span class="built_in">input</span>(<span class="string">&quot;请输入密码:\n&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> password == <span class="string">&quot;123456&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;密码正确\n&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;密码错误\n&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;密码三次输入错误，请明天再来尝试！&quot;</span>)</span><br></pre></td></tr></table></figure>
 
@@ -516,7 +465,7 @@
 
 
 
-<h3 id="2-列表的特点"><a href="#2-列表的特点" class="headerlink" title="2.列表的特点"></a>2.列表的特点</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220423232953909.png" alt="image-20220423232953909" style="zoom:80%;">
+<h3 id="2-列表的特点"><a href="#2-列表的特点" class="headerlink" title="2.列表的特点"></a>2.列表的特点</h3><img src="/.io//image-20220423232953909.png" alt="image-20220423232953909" style="zoom:80%;">
 
 <blockquote>
 <p><strong>python列表可以逆序查找</strong></p>
@@ -530,7 +479,7 @@
 <h3 id="3-列表的查询操作"><a href="#3-列表的查询操作" class="headerlink" title="3.列表的查询操作"></a>3.列表的查询操作</h3><blockquote>
 <p><strong>①获取列表中指定元素的索引</strong></p>
 </blockquote>
-<img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220423233619048.png" alt="image-20220423233619048" style="zoom:80%;">
+<img src="/.io//image-20220423233619048.png" alt="image-20220423233619048" style="zoom:80%;">
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">lst1 = [<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>, <span class="number">98</span>, <span class="string">&quot;hello&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(lst1.index(<span class="string">&quot;hello&quot;</span>))  <span class="comment"># 0 只返回相同元素中第一个元素的索引</span></span><br></pre></td></tr></table></figure>
 
@@ -547,7 +496,7 @@
 <blockquote>
 <p><strong>②获取列表中指定元素</strong></p>
 </blockquote>
-<img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220423234524937.png" alt="image-20220423234524937" style="zoom:80%;">
+<img src="/.io//image-20220423234524937.png" alt="image-20220423234524937" style="zoom:80%;">
 
 <blockquote>
 <p><strong>python列表可以逆序查找</strong></p>
@@ -559,7 +508,7 @@
 <blockquote>
 <p><strong>③获取列表中的多个元素（切片）</strong></p>
 </blockquote>
-<img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220424144056331.png" alt="image-20220424144056331" style="zoom:80%;">
+<img src="/.io//image-20220424144056331.png" alt="image-20220424144056331" style="zoom:80%;">
 
 <blockquote>
 <p><strong>step为正数</strong></p>
@@ -579,7 +528,7 @@
 
 
 
-<h3 id="4-列表元素的增加操作"><a href="#4-列表元素的增加操作" class="headerlink" title="4.列表元素的增加操作"></a>4.列表元素的增加操作</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220424144110118.png" alt="image-20220424144110118" style="zoom:80%;">
+<h3 id="4-列表元素的增加操作"><a href="#4-列表元素的增加操作" class="headerlink" title="4.列表元素的增加操作"></a>4.列表元素的增加操作</h3><img src="/.io//image-20220424144110118.png" alt="image-20220424144110118" style="zoom:80%;">
 
 <blockquote>
 <p><strong>append()：在列表的末尾添加一个元素</strong></p>
@@ -609,7 +558,7 @@
 
 
 
-<h3 id="5-列表元素的删除操作"><a href="#5-列表元素的删除操作" class="headerlink" title="5.列表元素的删除操作"></a>5.列表元素的删除操作</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220424161423171.png" alt="image-20220424161423171" style="zoom:80%;">
+<h3 id="5-列表元素的删除操作"><a href="#5-列表元素的删除操作" class="headerlink" title="5.列表元素的删除操作"></a>5.列表元素的删除操作</h3><img src="/.io//image-20220424161423171.png" alt="image-20220424161423171" style="zoom:80%;">
 
 <blockquote>
 <p><strong>remove()：一次删除一个元素，重复元素只删除第一个</strong></p>
@@ -662,7 +611,7 @@
 
 
 
-<h3 id="7-列表元素的排序操作"><a href="#7-列表元素的排序操作" class="headerlink" title="7.列表元素的排序操作"></a>7.列表元素的排序操作</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220424211208891.png" alt="image-20220424211208891" style="zoom:80%;">
+<h3 id="7-列表元素的排序操作"><a href="#7-列表元素的排序操作" class="headerlink" title="7.列表元素的排序操作"></a>7.列表元素的排序操作</h3><img src="/.io//image-20220424211208891.png" alt="image-20220424211208891" style="zoom:80%;">
 
 <blockquote>
 <p><strong>sort()函数</strong></p>
@@ -680,7 +629,7 @@
 
 
 
-<h3 id="8-列表生成式"><a href="#8-列表生成式" class="headerlink" title="8.列表生成式"></a>8.列表生成式</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220424212353036.png" alt="image-20220424212353036" style="zoom:80%;">
+<h3 id="8-列表生成式"><a href="#8-列表生成式" class="headerlink" title="8.列表生成式"></a>8.列表生成式</h3><img src="/.io//image-20220424212353036.png" alt="image-20220424212353036" style="zoom:80%;">
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 = [i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">11</span>)]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(list1)  <span class="comment"># [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span></span><br></pre></td></tr></table></figure>
 
@@ -689,20 +638,20 @@
 
 
 <hr>
-<h2 id="七、字典"><a href="#七、字典" class="headerlink" title="七、字典"></a>七、字典</h2><h3 id="1-字典结构介绍"><a href="#1-字典结构介绍" class="headerlink" title="1.字典结构介绍"></a>1.字典结构介绍</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220424214029410.png" alt="image-20220424214029410" style="zoom: 67%;">
+<h2 id="七、字典"><a href="#七、字典" class="headerlink" title="七、字典"></a>七、字典</h2><h3 id="1-字典结构介绍"><a href="#1-字典结构介绍" class="headerlink" title="1.字典结构介绍"></a>1.字典结构介绍</h3><img src="/.io//image-20220424214029410.png" alt="image-20220424214029410" style="zoom: 67%;">
 
 <blockquote>
 <p><strong>字典的实现原理</strong></p>
 <p>字典是无序的，通过哈希函数查找对应位置。</p>
 <p>所以放在字典中的序列必须是一个不可变序列 -&gt; str(不能进行增删改操作)</p>
 </blockquote>
-<img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220425102205874.png" alt="image-20220425102205874" style="zoom: 50%;">
+<img src="/.io//image-20220425102205874.png" alt="image-20220425102205874" style="zoom: 50%;">
 
 
 
 
 
-<h3 id="2-字典的特点"><a href="#2-字典的特点" class="headerlink" title="2.字典的特点"></a>2.字典的特点</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220425134835931.png" alt="image-20220425134835931" style="zoom:67%;">
+<h3 id="2-字典的特点"><a href="#2-字典的特点" class="headerlink" title="2.字典的特点"></a>2.字典的特点</h3><img src="/.io//image-20220425134835931.png" alt="image-20220425134835931" style="zoom:67%;">
 
 
 
@@ -710,7 +659,7 @@
 
 
 
-<h3 id="3-字典的创建"><a href="#3-字典的创建" class="headerlink" title="3.字典的创建"></a>3.字典的创建</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220425102753903.png" alt="image-20220425102753903" style="zoom: 67%;">
+<h3 id="3-字典的创建"><a href="#3-字典的创建" class="headerlink" title="3.字典的创建"></a>3.字典的创建</h3><img src="/.io//image-20220425102753903.png" alt="image-20220425102753903" style="zoom: 67%;">
 
 <blockquote>
 <p>**①使用{}创建字典 **</p>
@@ -728,7 +677,7 @@
 
 
 
-<h3 id="4-字典元素的获取"><a href="#4-字典元素的获取" class="headerlink" title="4.字典元素的获取"></a>4.字典元素的获取</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220425103723582.png" alt="image-20220425103723582" style="zoom: 67%;">
+<h3 id="4-字典元素的获取"><a href="#4-字典元素的获取" class="headerlink" title="4.字典元素的获取"></a>4.字典元素的获取</h3><img src="/.io//image-20220425103723582.png" alt="image-20220425103723582" style="zoom: 67%;">
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scores = &#123;<span class="string">&quot;张三&quot;</span>: <span class="number">100</span>, <span class="string">&quot;李四&quot;</span>: <span class="number">90</span>, <span class="string">&quot;王五&quot;</span>: <span class="number">43</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(scores.get(<span class="string">&quot;张三&quot;</span>))  <span class="comment"># 100</span></span><br><span class="line"><span class="built_in">print</span>(scores.get(<span class="string">&quot;123&quot;</span>))  <span class="comment"># None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># get()方法可以设置默认值</span></span><br><span class="line"><span class="built_in">print</span>(scores.get(<span class="string">&quot;123&quot;</span>, <span class="string">&quot;default value&quot;</span>))  <span class="comment"># default value </span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(scores[<span class="string">&quot;张三&quot;</span>])  <span class="comment"># 100</span></span><br><span class="line"><span class="built_in">print</span>(scores[<span class="string">&quot;123&quot;</span>])  <span class="comment"># KeyError: &#x27;123&#x27;</span></span><br></pre></td></tr></table></figure>
 
@@ -736,7 +685,7 @@
 
 
 
-<h3 id="5-字典的删除和新增"><a href="#5-字典的删除和新增" class="headerlink" title="5.字典的删除和新增"></a>5.字典的删除和新增</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220425104837092.png" alt="image-20220425104837092" style="zoom: 67%;">
+<h3 id="5-字典的删除和新增"><a href="#5-字典的删除和新增" class="headerlink" title="5.字典的删除和新增"></a>5.字典的删除和新增</h3><img src="/.io//image-20220425104837092.png" alt="image-20220425104837092" style="zoom: 67%;">
 
 <blockquote>
 <p>①<strong>字典元素的删除</strong></p>
@@ -762,7 +711,7 @@
 
 
 
-<h3 id="6-获取字典视图"><a href="#6-获取字典视图" class="headerlink" title="6.获取字典视图"></a>6.获取字典视图</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220425105755445.png" alt="image-20220425105755445" style="zoom:67%;">
+<h3 id="6-获取字典视图"><a href="#6-获取字典视图" class="headerlink" title="6.获取字典视图"></a>6.获取字典视图</h3><img src="/.io//image-20220425105755445.png" alt="image-20220425105755445" style="zoom:67%;">
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scores = &#123;<span class="string">&quot;张三&quot;</span>: <span class="number">100</span>, <span class="string">&quot;李四&quot;</span>: <span class="number">90</span>, <span class="string">&quot;王五&quot;</span>: <span class="number">43</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(scores.keys()))  <span class="comment"># 获取所有的key并将其转为列表 [&#x27;张三&#x27;, &#x27;李四&#x27;, &#x27;王五&#x27;]</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(scores.values()))  <span class="comment"># 获取所有的value并将其转为列表 [100, 90, 43]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 转换之后的列表元素是由元组构成</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(scores.items()))  <span class="comment"># 获取所有的key-value对并将其转为列表 [(&#x27;张三&#x27;, 100), (&#x27;李四&#x27;, 90), (&#x27;王五&#x27;, 43)]</span></span><br></pre></td></tr></table></figure>
 
@@ -779,7 +728,7 @@
 
 
 
-<h3 id="8-字典生成式"><a href="#8-字典生成式" class="headerlink" title="8.字典生成式"></a>8.字典生成式</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220425135349521.png" alt="image-20220425135349521" style="zoom:50%;">
+<h3 id="8-字典生成式"><a href="#8-字典生成式" class="headerlink" title="8.字典生成式"></a>8.字典生成式</h3><img src="/.io//image-20220425135349521.png" alt="image-20220425135349521" style="zoom:50%;">
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">items = [<span class="string">&quot;fruits&quot;</span>, <span class="string">&quot;books&quot;</span>, <span class="string">&quot;others&quot;</span>]</span><br><span class="line">prices = [<span class="number">96</span>, <span class="number">78</span>, <span class="number">85</span>]</span><br><span class="line"></span><br><span class="line">dicts = &#123;keyword: value <span class="keyword">for</span> keyword, value <span class="keyword">in</span> <span class="built_in">zip</span>(items, prices)&#125;</span><br><span class="line"><span class="built_in">print</span>(dicts)  <span class="comment"># &#123;&#x27;fruits&#x27;: 96, &#x27;books&#x27;: 78, &#x27;others&#x27;: 85&#125;</span></span><br></pre></td></tr></table></figure>
 
@@ -795,22 +744,22 @@
 
 
 <hr>
-<h2 id="八、元组"><a href="#八、元组" class="headerlink" title="八、元组"></a>八、元组</h2><h3 id="1-元组结构介绍"><a href="#1-元组结构介绍" class="headerlink" title="1.元组结构介绍"></a>1.元组结构介绍</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220425141741416.png" alt="image-20220425141741416" style="zoom: 67%;">
+<h2 id="八、元组"><a href="#八、元组" class="headerlink" title="八、元组"></a>八、元组</h2><h3 id="1-元组结构介绍"><a href="#1-元组结构介绍" class="headerlink" title="1.元组结构介绍"></a>1.元组结构介绍</h3><img src="/.io//image-20220425141741416.png" alt="image-20220425141741416" style="zoom: 67%;">
 
 
 
 <blockquote>
 <p><strong>元组为不可变序列，注意事项</strong></p>
 </blockquote>
-<img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220425185204518.png" alt="image-20220425185204518" style="zoom: 50%;">
+<img src="/.io//image-20220425185204518.png" alt="image-20220425185204518" style="zoom: 50%;">
 
-<img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220425185232811.png" alt="image-20220425185232811" style="zoom:67%;">
-
-
+<img src="/.io//image-20220425185232811.png" alt="image-20220425185232811" style="zoom:67%;">
 
 
 
-<h3 id="2-元组的创建"><a href="#2-元组的创建" class="headerlink" title="2.元组的创建"></a>2.元组的创建</h3><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220425142357802.png" alt="image-20220425142357802" style="zoom: 67%;">
+
+
+<h3 id="2-元组的创建"><a href="#2-元组的创建" class="headerlink" title="2.元组的创建"></a>2.元组的创建</h3><img src="/.io//image-20220425142357802.png" alt="image-20220425142357802" style="zoom: 67%;">
 
 <blockquote>
 <p><strong>①使用()创建元组</strong></p>
@@ -840,6 +789,78 @@
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo如何写文章</title>
+    <url>/2022/05/05/Hexo%E5%A6%82%E4%BD%95%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<h2 id="Hexo文章管理"><a href="#Hexo文章管理" class="headerlink" title="Hexo文章管理"></a>Hexo文章管理</h2><h3 id="1-创建一个md文件"><a href="#1-创建一个md文件" class="headerlink" title="1.创建一个md文件"></a>1.创建一个md文件</h3><p>md文件也就是<code>Markdown</code>文件，通过以下命令来创建：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ hexo new &lt;title&gt;</span><br><span class="line">$ hexo new &quot;我的第一篇文章&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-布局（layout）"><a href="#2-布局（layout）" class="headerlink" title="2.布局（layout）"></a>2.布局（layout）</h3><ul>
+<li>创建md文件时，我们可以指定布局</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br><span class="line">$ hexo new page &quot;我的页面&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>布局有三种：<code>post</code>（文章）、<code>draft</code>（草稿）、<code>page</code>（页面）</li>
+</ul>
+<p>在新建文件时，Hexo 会根据 <code>scaffolds</code> 文件夹内相对应的文件（可以理解为模板）来建立md文件：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-2683cfb7e862381166e609ef37210a99_720w.png" alt="img"></p>
+<ul>
+<li>如果没有指定布局类型，则为默认布局<code>post</code>，可以在站点配置文件修改 <code>default_layout</code> 参数来修改默认布局。</li>
+<li>当我们创建不同布局的md文件时，它们会存储在不同路径：</li>
+</ul>
+<p><img src="https://pic3.zhimg.com/80/v2-81c1aa7b55f1ae6767b3563127a22156_720w.jpg" alt="img"></p>
+<blockquote>
+<p>对于独立页面来说，Hexo 会创建一个以标题为名字的目录，并在目录中放置一个 <code>index.md</code> 文件，页面布局顾名思义就是用来DIY我们博客页面的。</p>
+</blockquote>
+<h3 id="3-草稿（draft）"><a href="#3-草稿（draft）" class="headerlink" title="3.草稿（draft）"></a>3.草稿（draft）</h3><p><code>draft</code>这种布局在建立时会被保存到 <code>source/_drafts</code> 文件夹中，但不会显示在页面上，如果我们不想某一篇文章显示在页面上，那么就可以把它移动到<code>_drafts</code>文件夹中。</p>
+<ul>
+<li>我们可在启动服务器时加上 <code>--draft</code> 参数来查看草稿。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo server --draft</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>还可以在站点配置文件中把 <code>render_drafts</code> 参数设为 <code>true</code> 来预览草稿。</li>
+<li>我们可以通过 <code>publish</code> 命令将草稿发布文章或者页面，它将会被移动到指定的文件夹。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo publish [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-Front-matter"><a href="#4-Front-matter" class="headerlink" title="4.Front-matter"></a>4.Front-matter</h3><p>当我们创建一个md文件后，打开后会看到一些内容，这些称为<code>Front-matter</code>，它是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量，举例来说：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Hello</span> <span class="string">World</span> <span class="comment"># 标题就是我们上面创建的时候指定的名字</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2013</span><span class="string">/7/13</span> <span class="number">20</span><span class="string">:46:25</span> <span class="comment"># 文件创建的时间</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在<code>Typora</code>中我们在md文件的首行（必须是第一行）输入<code>---</code> ，然后按回车就可以插入<code>Front-matter</code>了。</p>
+</blockquote>
+<p>Front-matter预定义参数</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">layout  布局  默认为true，如果你不想你的文章被处理，可以设置为false</span><br><span class="line">title  标题  标题会显示在最上方居中位置     </span><br><span class="line">date  建立日期    如果不指定则为默认值-文件创建日期，可以自定义。</span><br><span class="line">update  更新日期  如果不指定则为默认值-文件修改后重新生成静态文件的日期。</span><br><span class="line">comments  是否开启文章的评论功能 默认值为true</span><br><span class="line">tags  标签（不适用于页面page布局）</span><br><span class="line">categoreies  分类（不适用于页面page布局）</span><br><span class="line">permalink  覆盖文章网址</span><br><span class="line">keywords  仅用于 meta 标签和 Open Graph 的关键词（不推荐使用）</span><br></pre></td></tr></table></figure>
+
+<h3 id="为文章添加分类与标签"><a href="#为文章添加分类与标签" class="headerlink" title="为文章添加分类与标签"></a>为文章添加分类与标签</h3><p>只有文章（post布局）支持分类和标签，需要在<code>Front-matter</code>中设置。分类有层级关系，标签没有。</p>
+<p>举个例子：<br>1）下面文章它的标签是：Hexo、博客<br>2）分类是： 个人博客 &gt; Hexo博客<br>3）“Hexo博客” 是 “个人博客” 的子分类</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">个人博客（第一层级）</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Hexo博客（第二层级）</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Hexo</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">博客</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="为文章添加多个分类"><a href="#为文章添加多个分类" class="headerlink" title="为文章添加多个分类"></a>为文章添加多个分类</h3><p>1）下面文章属于三个分类：日常 &gt; 生活，日常 &gt; 随想，日记<br>2）其中生活、随想为日常的子分类，日常和日记为同级分类</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">日常</span>, <span class="string">生活</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">日常</span>, <span class="string">随想</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">日记</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
+<li><strong>清除缓存：</strong><code>hexo clean</code></li>
+<li><strong>生成静态文件：</strong><code>hexo generate</code>可简写为 <code>hexo g</code></li>
+<li><strong>启动服务器：</strong><code>hexo server</code>或者 <code>hexo s</code> 常用参数：<code>-p（--port）</code>重设端口</li>
+<li><strong>部署：</strong><code>hexo deploy</code>可简写为<code>hexo d</code>，用于将网站部署到服务器上。（暂时用不到，目前都是在本地，后面我们将博客托管到<code>GitHub Pages</code>或<code>Gitee Pages</code>时才会用到此命令）<br>常用参数：<code>-g（--generate）</code>，<code>hexo d -g</code>部署前预先生成静态文件，等同于 <code>hexo g -d</code></li>
+</ul>
+<p><strong>一般发布文章或者修改博客后需要这些操作：</strong>清除缓存&gt;生成静态文件&gt;启动服务器，测试没问题后再部署。</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 我们可以写成一条命令</span></span><br><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>更多细节请查看：<a href="https://link.zhihu.com/?target=https://hexo.bootcss.com/docs/">Hexo官方文档</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
       </tags>
   </entry>
 </search>

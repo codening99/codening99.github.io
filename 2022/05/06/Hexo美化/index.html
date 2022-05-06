@@ -27,15 +27,17 @@
 <meta property="og:site_name" content="CodeningBlog">
 <meta property="og:description" content="1.添加站内搜索功能设置的方法如下：  首先安装依赖：  1$ cnpm install hexo-generator-searchdb   站点配置文件的配置 (在该文件的末尾加上以下代码)：  12345search:  path: search.xml  field: post  format: html  limit: 10000   主题配置文件的配置 (按照以下所示配置即可)：  12">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://codening99.github.io/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134304869.png">
-<meta property="og:image" content="https://codening99.github.io/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134320955.png">
-<meta property="og:image" content="https://codening99.github.io/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506135509439.png">
+<meta property="og:image" content="https://codening99.github.io/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134304869.png">
+<meta property="og:image" content="https://codening99.github.io/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134320955.png">
+<meta property="og:image" content="https://codening99.github.io/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506135509439.png">
+<meta property="og:image" content="https://codening99.github.io/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506143312204.png">
+<meta property="og:image" content="https://codening99.github.io/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506143404112.png">
 <meta property="article:published_time" content="2022-05-06T05:40:13.000Z">
-<meta property="article:modified_time" content="2022-05-06T06:24:37.528Z">
+<meta property="article:modified_time" content="2022-05-06T06:34:09.515Z">
 <meta property="article:author" content="无名程序员">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://codening99.github.io/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134304869.png">
+<meta name="twitter:image" content="https://codening99.github.io/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134304869.png">
 
 <link rel="canonical" href="https://codening99.github.io/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/">
 
@@ -216,6 +218,7 @@
         </h1>
 
         <div class="post-meta">
+        
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -223,7 +226,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-05-06 13:40:13 / 修改时间：14:24:37" itemprop="dateCreated datePublished" datetime="2022-05-06T13:40:13+08:00">2022-05-06</time>
+              <time title="创建时间：2022-05-06 13:40:13 / 修改时间：14:34:09" itemprop="dateCreated datePublished" datetime="2022-05-06T13:40:13+08:00">2022-05-06</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,7 +250,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.7k</span>
+              <span>2.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -282,8 +285,8 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Local Search</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Dependencies: https://github.com/theme-next/hexo-generator-searchdb</span></span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">If auto, trigger search by changing input.</span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">If manual, trigger search by pressing enter key or search button.</span></span><br><span class="line">  trigger: auto</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Show top n results per article, show all results by setting to -1</span></span><br><span class="line">  top_n_per_article: 1</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Unescape html strings to the readable one.</span></span><br><span class="line">  unescape: false</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Preload the search data when the page loads.</span></span><br><span class="line">  preload: true</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Swiftype Search API Key</span></span><br><span class="line">swiftype_key:</span><br></pre></td></tr></table></figure>
 
 <p>然后我们就可以在菜单栏看到一个搜索按钮，点击就可以进行对你的博客内容进行搜索</p>
-<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134304869.png" alt="image-20220506134304869"></p>
-<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134320955.png" alt="image-20220506134320955"></p>
+<p><img src="/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134304869.png" alt="image-20220506134304869"></p>
+<p><img src="/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134320955.png" alt="image-20220506134320955"></p>
 <hr>
 <h2 id="2-爬取豆瓣账号数据"><a href="#2-爬取豆瓣账号数据" class="headerlink" title="2.爬取豆瓣账号数据"></a>2.爬取豆瓣账号数据</h2><p>我们可以爬取自己的豆瓣账号数据从而可以分享你的书籍和电影<br>具体的使用方法如下：</p>
 <ul>
@@ -318,11 +321,31 @@
 </ul>
 <hr>
 <h2 id="3-不蒜子统计"><a href="#3-不蒜子统计" class="headerlink" title="3.不蒜子统计"></a>3.不蒜子统计</h2><p><code>next</code> 主题新版本已经为我们提供了卜算子接口，用于统计站点的访问人数和总访问量，效果如下所示：</p>
-<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506135509439.png" alt="image-20220506135509439"></p>
+<p><img src="/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506135509439.png" alt="image-20220506135509439"></p>
 <p>由于已经提供了接口，所以配置就很方便，具体的配置就变得很简单，只需要修改 <code>busuanzi</code> 部分：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment">#是否开启不蒜子统计功能</span></span><br><span class="line"><span class="attr">total_visitors:</span> <span class="literal">true</span> <span class="comment">#是否统计总访客数</span></span><br><span class="line"><span class="attr">total_visitors_icon:</span> <span class="string">user</span> <span class="comment">#访客数图标为人像</span></span><br><span class="line"><span class="attr">total_views:</span> <span class="literal">true</span> <span class="comment">#是否同级总访问数</span></span><br><span class="line"><span class="attr">total_views_icon:</span> <span class="string">eye</span> <span class="comment">#访问数图标为眼睛</span></span><br><span class="line"><span class="attr">post_views:</span> <span class="literal">true</span> <span class="comment">#是否统计文章访问数</span></span><br><span class="line"><span class="attr">post_views_icon:</span> <span class="string">eye</span> <span class="comment">#访问数图标为眼睛</span></span><br></pre></td></tr></table></figure>
 
 <p>相关链接 <a target="_blank" rel="noopener" href="http://busuanzi.ibruce.info/">卜蒜子</a></p>
+<hr>
+<h2 id="4-设置文章置顶"><a href="#4-设置文章置顶" class="headerlink" title="4.设置文章置顶"></a>4.设置文章置顶</h2><p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Hexo&spm=1001.2101.3001.7020">Hexo</a> <code>Next</code>主题中，首页文章默认排序方式是按照时间逆序来排的，越新的文章排在越前面。当我们想让访客一进来就能看到推荐的文章时，可以将这些文章置顶。</p>
+<ol>
+<li>安装插件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm uninstall hexo-generator-index --save</span><br><span class="line">cnpm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>设置文章置顶</li>
+</ol>
+<p>在需要置顶的文章的 Front-matter 中加上<code>top: true</code>即可，比如：</p>
+<p><img src="/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506143312204.png" alt="image-20220506143312204"></p>
+<ol start="3">
+<li>添加置顶图标</li>
+</ol>
+<p>打开 <code>/blog/themes/hexo-theme-next/layout/_macro</code> 目录下的 <code>post.swig</code> 文件，在<code>&lt;div class=&quot;post-meta&quot;&gt;</code>标签中插入如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if post.top %&#125;</span><br><span class="line">  &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt;</span><br><span class="line">  &lt;font color=7D26CD&gt;置顶&lt;/font&gt;</span><br><span class="line">  &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重新生成部署，效果如下：</p>
+<p><img src="/.io//05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506143404112.png" alt="image-20220506143404112"></p>
 
     </div>
 
@@ -435,7 +458,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%B7%BB%E5%8A%A0%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD"><span class="nav-number">1.</span> <span class="nav-text">1.添加站内搜索功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E8%B4%A6%E5%8F%B7%E6%95%B0%E6%8D%AE"><span class="nav-number">2.</span> <span class="nav-text">2.爬取豆瓣账号数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%B8%8D%E8%92%9C%E5%AD%90%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">3.不蒜子统计</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%B7%BB%E5%8A%A0%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD"><span class="nav-number">1.</span> <span class="nav-text">1.添加站内搜索功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E8%B4%A6%E5%8F%B7%E6%95%B0%E6%8D%AE"><span class="nav-number">2.</span> <span class="nav-text">2.爬取豆瓣账号数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%B8%8D%E8%92%9C%E5%AD%90%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">3.不蒜子统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E7%BD%AE%E9%A1%B6"><span class="nav-number">4.</span> <span class="nav-text">4.设置文章置顶</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -508,12 +531,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">15k</span>
+    <span title="站点总字数">16k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14 分钟</span>
+    <span title="站点阅读时长">15 分钟</span>
 </div>
 
 <!--
