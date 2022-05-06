@@ -31,6 +31,15 @@
       </tags>
   </entry>
   <entry>
+    <title>新文章</title>
+    <url>/2022/05/06/%E6%96%B0%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<p>124124123</p>
+]]></content>
+      <tags>
+        <tag>乱写的</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>解决Hexo博客不显示图片的一种方法</title>
     <url>/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h2 id="1-修改blog配置"><a href="#1-修改blog配置" class="headerlink" title="1.修改blog配置"></a>1.修改blog配置</h2><p>修改博客根目录中<code>_config.yml</code>文件的配置项<code>post_asset_folder</code>为<code>true</code>：</p>
