@@ -20,20 +20,23 @@
     var CONFIG = {"hostname":"codening99.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="梦想成为高手的普通人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="文章分类">
-<meta property="og:url" content="https://codening99.github.io/categories/index.html">
+  <meta name="description" content="1.修改blog配置修改博客根目录中_config.yml文件的配置项post_asset_folder为true： post_asset_folder: true 完成此设置后，当你通过hexo new 文件名新建博客后，会产生一个和文件同名的文件夹。  2.下载插件在博客根目录中下使用npm安装插件： 1npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;he">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决Hexo博客不显示的一种方法">
+<meta property="og:url" content="https://codening99.github.io/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="CodeningBlog">
-<meta property="og:description" content="梦想成为高手的普通人">
+<meta property="og:description" content="1.修改blog配置修改博客根目录中_config.yml文件的配置项post_asset_folder为true： post_asset_folder: true 完成此设置后，当你通过hexo new 文件名新建博客后，会产生一个和文件同名的文件夹。  2.下载插件在博客根目录中下使用npm安装插件： 1npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;he">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-05T09:01:42.000Z">
-<meta property="article:modified_time" content="2022-05-05T12:34:00.798Z">
+<meta property="og:image" content="https://codening99.github.io/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/13713347-8e33caf1f84c415b.png">
+<meta property="article:published_time" content="2022-05-06T10:06:47.000Z">
+<meta property="article:modified_time" content="2022-05-06T10:14:57.863Z">
 <meta property="article:author" content="无名程序员">
-<meta property="article:tag" content="nlp 深度学习 机器学习 java python">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="bug">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://codening99.github.io/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/13713347-8e33caf1f84c415b.png">
 
-<link rel="canonical" href="https://codening99.github.io/categories/">
+<link rel="canonical" href="https://codening99.github.io/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -41,13 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>文章分类 | CodeningBlog
-</title>
+  <title>解决Hexo博客不显示的一种方法 | CodeningBlog</title>
   
 
 
@@ -188,51 +190,154 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">文章分类
-</h1>
-
-<div class="post-meta">
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codening99.github.io/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.fif">
+      <meta itemprop="name" content="无名程序员">
+      <meta itemprop="description" content="梦想成为高手的普通人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeningBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          解决Hexo博客不显示的一种方法
+        </h1>
+
+        <div class="post-meta">
+        
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-06 18:06:47 / 修改时间：18:14:57" itemprop="dateCreated datePublished" datetime="2022-05-06T18:06:47+08:00">2022-05-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>388</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1-修改blog配置"><a href="#1-修改blog配置" class="headerlink" title="1.修改blog配置"></a>1.修改blog配置</h2><p>修改博客根目录中<code>_config.yml</code>文件的配置项<code>post_asset_folder</code>为<code>true</code>：</p>
+<p><code>post_asset_folder: true</code></p>
+<p>完成此设置后，当你通过<code>hexo new 文件名</code>新建博客后，会产生一个和文件同名的文件夹。</p>
+<p><img src="/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/13713347-8e33caf1f84c415b.png" alt="img"></p>
+<h2 id="2-下载插件"><a href="#2-下载插件" class="headerlink" title="2.下载插件"></a>2.下载插件</h2><p>在博客根目录中下使用npm安装插件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>当文章需要添加图片时，将需要添加的图片放入同名的文件夹中，同时通过相对路径索引到该图片。</p>
+<p>例如我在上方修改博客配置中展示的那张图片的md源码为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![示例](./解决Hexo博客不显示图片的一种方法/1580801930220.png)</span><br></pre></td></tr></table></figure>
+
+<p>使用命令<code>hexo s</code>开启服务，若无报错在本地可以看到图片在博客中正确显示。</p>
+<p>相关链接: <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ea78bdd0551f/">解决Hexo博客不显示图片的一种方法</a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>无名程序员
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://codening99.github.io/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/" title="解决Hexo博客不显示的一种方法">https://codening99.github.io/2022/05/06/解决Hexo博客不显示的一种方法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
 </div>
 
-</header>
+
+      <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
 
       
-      
-      
-      <div class="post-body">
-          <div class="category-all-page">
-            <div class="category-all-title">
-              目前共计 3 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tool/">tool</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
-        
       </div>
-      
-      
-      
-    </div>
-    
 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i># Hexo</a>
+              <a href="/tags/bug/" rel="tag"><i class="fa fa-tag"></i># bug</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/06/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" rel="prev" title="常用工具">
+      <i class="fa fa-chevron-left"></i> 常用工具
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
     
-    
-    
+  </article>
+  
+  
+  
+
 
 
           </div>
@@ -283,6 +388,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BF%AE%E6%94%B9blog%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">1.修改blog配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%B8%8B%E8%BD%BD%E6%8F%92%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">2.下载插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">示例</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
