@@ -50,8 +50,8 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Local Search</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Dependencies: https://github.com/theme-next/hexo-generator-searchdb</span></span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">If auto, trigger search by changing input.</span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">If manual, trigger search by pressing enter key or search button.</span></span><br><span class="line">  trigger: auto</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Show top n results per article, show all results by setting to -1</span></span><br><span class="line">  top_n_per_article: 1</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Unescape html strings to the readable one.</span></span><br><span class="line">  unescape: false</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Preload the search data when the page loads.</span></span><br><span class="line">  preload: true</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Swiftype Search API Key</span></span><br><span class="line">swiftype_key:</span><br></pre></td></tr></table></figure>
 
 <p>然后我们就可以在菜单栏看到一个搜索按钮，点击就可以进行对你的博客内容进行搜索</p>
-<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134304869.png" alt="image-20220506134304869"></p>
-<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134320955.png" alt="image-20220506134320955"></p>
+<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134304869.png" alt="image-20220506134304869"></p>
+<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506134320955.png" alt="image-20220506134320955"></p>
 <hr>
 <h2 id="2-爬取豆瓣账号数据"><a href="#2-爬取豆瓣账号数据" class="headerlink" title="2.爬取豆瓣账号数据"></a>2.爬取豆瓣账号数据</h2><p>我们可以爬取自己的豆瓣账号数据从而可以分享你的书籍和电影<br>具体的使用方法如下：</p>
 <ul>
@@ -86,7 +86,7 @@
 </ul>
 <hr>
 <h2 id="3-不蒜子统计"><a href="#3-不蒜子统计" class="headerlink" title="3.不蒜子统计"></a>3.不蒜子统计</h2><p><code>next</code> 主题新版本已经为我们提供了卜算子接口，用于统计站点的访问人数和总访问量，效果如下所示：</p>
-<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506135509439.png" alt="image-20220506135509439"></p>
+<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506135509439.png" alt="image-20220506135509439"></p>
 <p>由于已经提供了接口，所以配置就很方便，具体的配置就变得很简单，只需要修改 <code>busuanzi</code> 部分：</p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment">#是否开启不蒜子统计功能</span></span><br><span class="line"><span class="attr">total_visitors:</span> <span class="literal">true</span> <span class="comment">#是否统计总访客数</span></span><br><span class="line"><span class="attr">total_visitors_icon:</span> <span class="string">user</span> <span class="comment">#访客数图标为人像</span></span><br><span class="line"><span class="attr">total_views:</span> <span class="literal">true</span> <span class="comment">#是否同级总访问数</span></span><br><span class="line"><span class="attr">total_views_icon:</span> <span class="string">eye</span> <span class="comment">#访问数图标为眼睛</span></span><br><span class="line"><span class="attr">post_views:</span> <span class="literal">true</span> <span class="comment">#是否统计文章访问数</span></span><br><span class="line"><span class="attr">post_views_icon:</span> <span class="string">eye</span> <span class="comment">#访问数图标为眼睛</span></span><br></pre></td></tr></table></figure>
 
@@ -102,7 +102,7 @@
 <li>设置文章置顶</li>
 </ol>
 <p>在需要置顶的文章的 Front-matter 中加上<code>top: true</code>即可，比如：</p>
-<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506143312204.png" alt="image-20220506143312204"></p>
+<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506143312204.png" alt="image-20220506143312204"></p>
 <ol start="3">
 <li>添加置顶图标</li>
 </ol>
@@ -110,7 +110,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if post.top %&#125;</span><br><span class="line">  &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt;</span><br><span class="line">  &lt;font color=7D26CD&gt;置顶&lt;/font&gt;</span><br><span class="line">  &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
 
 <p>重新生成部署，效果如下：</p>
-<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506143404112.png" alt="image-20220506143404112"></p>
+<p><img src="/2022/05/06/Hexo%E7%BE%8E%E5%8C%96/image-20220506143404112.png" alt="image-20220506143404112"></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -134,7 +134,7 @@
 <h3 id="2-浮点类型float"><a href="#2-浮点类型float" class="headerlink" title="2.浮点类型float"></a>2.浮点类型float</h3><blockquote>
 <p>使用浮点数进行计算时，可能会出现小数位数不确定的情况(个别情况) 如下图：</p>
 </blockquote>
-<p><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220422150101564-1651756443116.png" alt="image-20220422150101564"></p>
+<p><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220422150101564-1651756443116.png" alt="image-20220422150101564"></p>
 <blockquote>
 <p>解决办法：导入模块decimal</p>
 </blockquote>
@@ -167,7 +167,7 @@
 </blockquote>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line">age = <span class="number">12</span></span><br><span class="line"><span class="comment">#不进行转化</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;我是&#x27;</span> + name + <span class="string">&#x27;今年&#x27;</span> + age + <span class="string">&#x27;岁&#x27;</span>)</span><br><span class="line"><span class="comment">#出现错误 TypeError: can only concatenate str (not &quot;int&quot;) to str</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#进行转换</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;我是&#x27;</span> + name + <span class="string">&#x27;今年&#x27;</span> + (<span class="built_in">str</span>)age + <span class="string">&#x27;岁&#x27;</span>) <span class="comment">#将int类型通过str()转化为string类型</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220422161317962-1651756443117.png" alt="image-20220422161317962"></p>
+<p><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220422161317962-1651756443117.png" alt="image-20220422161317962"></p>
 <hr>
 <h2 id="二、注释"><a href="#二、注释" class="headerlink" title="二、注释"></a>二、注释</h2><blockquote>
 <p><strong>1.单行注释：#</strong></p>
@@ -369,7 +369,7 @@
 
 
 
-<h3 id="5-内置函数range"><a href="#5-内置函数range" class="headerlink" title="5.内置函数range()"></a>5.内置函数range()</h3><p><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220423133407806.png" alt="image-20220423133407806"></p>
+<h3 id="5-内置函数range"><a href="#5-内置函数range" class="headerlink" title="5.内置函数range()"></a>5.内置函数range()</h3><p><img src="/2022/05/05/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/image-20220423133407806.png" alt="image-20220423133407806"></p>
 <blockquote>
 <p>整数序列不包括stop值</p>
 </blockquote>
