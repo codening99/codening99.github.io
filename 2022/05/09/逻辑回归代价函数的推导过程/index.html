@@ -20,23 +20,33 @@
     var CONFIG = {"hostname":"codening99.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1.修改blog配置修改博客根目录中_config.yml文件的配置项post_asset_folder为true： post_asset_folder: true 完成此设置后，当你通过hexo new 文件名新建博客后，会产生一个和文件同名的文件夹。  2.下载插件在博客根目录中下使用npm安装插件： 1npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;he">
+  <meta name="description" content="1、代价函数在篇文章中，我们要介绍如何拟合逻辑回归模型的参数。具体来说，我要定义用来拟合参数的优化目标或者叫代价函数，这便是监督学习问题中的逻辑回归模型的拟合问题。 对于线性回归模型，我们定义的代价函数是所有模型误差的平方和。理论上来说，我们也可以对逻辑回归模型沿用这个定义，但是问题在于，当我们将    带入到这样定义了的代价函数中时，我们得到的代价函数将是一个非凸函数（non-convexfun">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决Hexo博客不显示图片的一种方法">
-<meta property="og:url" content="https://codening99.github.io/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="逻辑回归代价函数的推导过程">
+<meta property="og:url" content="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/index.html">
 <meta property="og:site_name" content="CodeningBlog">
-<meta property="og:description" content="1.修改blog配置修改博客根目录中_config.yml文件的配置项post_asset_folder为true： post_asset_folder: true 完成此设置后，当你通过hexo new 文件名新建博客后，会产生一个和文件同名的文件夹。  2.下载插件在博客根目录中下使用npm安装插件： 1npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;he">
+<meta property="og:description" content="1、代价函数在篇文章中，我们要介绍如何拟合逻辑回归模型的参数。具体来说，我要定义用来拟合参数的优化目标或者叫代价函数，这便是监督学习问题中的逻辑回归模型的拟合问题。 对于线性回归模型，我们定义的代价函数是所有模型误差的平方和。理论上来说，我们也可以对逻辑回归模型沿用这个定义，但是问题在于，当我们将    带入到这样定义了的代价函数中时，我们得到的代价函数将是一个非凸函数（non-convexfun">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://codening99.github.io/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/13713347-8e33caf1f84c415b.png">
-<meta property="article:published_time" content="2022-05-06T10:06:47.000Z">
-<meta property="article:modified_time" content="2022-05-06T10:29:39.529Z">
+<meta property="og:image" content="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174026721.png">
+<meta property="og:image" content="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174112747.png">
+<meta property="og:image" content="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174131197.png">
+<meta property="og:image" content="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174244152.png">
+<meta property="og:image" content="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/2020040917441155.png">
+<meta property="og:image" content="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174445688.png">
+<meta property="og:image" content="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174514183.png">
+<meta property="og:image" content="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174747831.png">
+<meta property="og:image" content="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174836976.png">
+<meta property="og:image" content="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174955683.png">
+<meta property="og:image" content="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/2020040917503479.png">
+<meta property="article:published_time" content="2022-05-09T13:17:54.000Z">
+<meta property="article:modified_time" content="2022-05-09T13:27:29.732Z">
 <meta property="article:author" content="无名程序员">
-<meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="bug">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="公式推导">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://codening99.github.io/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/13713347-8e33caf1f84c415b.png">
+<meta name="twitter:image" content="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174026721.png">
 
-<link rel="canonical" href="https://codening99.github.io/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/">
+<link rel="canonical" href="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/">
 
 
 <script id="page-configurations">
@@ -49,7 +59,7 @@
   };
 </script>
 
-  <title>解决Hexo博客不显示图片的一种方法 | CodeningBlog</title>
+  <title>逻辑回归代价函数的推导过程 | CodeningBlog</title>
   
 
 
@@ -198,7 +208,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codening99.github.io/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.fif">
@@ -211,7 +221,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          解决Hexo博客不显示图片的一种方法
+          逻辑回归代价函数的推导过程
         </h1>
 
         <div class="post-meta">
@@ -223,7 +233,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-05-06 18:06:47 / 修改时间：18:29:39" itemprop="dateCreated datePublished" datetime="2022-05-06T18:06:47+08:00">2022-05-06</time>
+              <time title="创建时间：2022-05-09 21:17:54 / 修改时间：21:27:29" itemprop="dateCreated datePublished" datetime="2022-05-09T21:17:54+08:00">2022-05-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,7 +241,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/" itemprop="url" rel="index"><span itemprop="name">公式推导</span></a>
                 </span>
             </span>
 
@@ -247,7 +261,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>391</span>
+              <span>915</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -265,19 +279,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="1-修改blog配置"><a href="#1-修改blog配置" class="headerlink" title="1.修改blog配置"></a>1.修改blog配置</h2><p>修改博客根目录中<code>_config.yml</code>文件的配置项<code>post_asset_folder</code>为<code>true</code>：</p>
-<p><code>post_asset_folder: true</code></p>
-<p>完成此设置后，当你通过<code>hexo new 文件名</code>新建博客后，会产生一个和文件同名的文件夹。</p>
-<p><img src="/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/13713347-8e33caf1f84c415b.png" alt="img"></p>
-<h2 id="2-下载插件"><a href="#2-下载插件" class="headerlink" title="2.下载插件"></a>2.下载插件</h2><p>在博客根目录中下使用npm安装插件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+        <h2 id="1、代价函数"><a href="#1、代价函数" class="headerlink" title="1、代价函数"></a>1、代价函数</h2><p>在篇文章中，我们要介绍如何<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%8B%9F%E5%90%88&spm=1001.2101.3001.7020">拟合</a>逻辑回归模型的参数。具体来说，我要定义用来拟合参数的优化目标或者叫代价函数，这便是监督学习问题中的逻辑回归模型的拟合问题。<br><img src="/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174026721.png" alt="在这里插入图片描述"></p>
+<p>对于<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%BA%BF%E6%80%A7&spm=1001.2101.3001.7020">线性</a>回归模型，我们定义的代价函数是所有模型误差的平方和。理论上来说，我们也可以对逻辑回归模型沿用这个定义，但是问题在于，当我们将</p>
+<blockquote>
+<p><img src="/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174112747.png" alt="在这里插入图片描述"></p>
+</blockquote>
+<p>带入到这样定义了的代价函数中时，我们得到的代价函数将是一个非凸函数（non-convexfunction）。<br><img src="/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174131197.png" alt="在这里插入图片描述"><br>这意味着我们的代价函数有许多局部最小值，这将影响<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D&spm=1001.2101.3001.7020">梯度下降</a>算法寻找全局最小值。</p>
+<p>线性回归的代价函数为：</p>
+<blockquote>
+<p><img src="/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174244152.png" alt="在这里插入图片描述"></p>
+</blockquote>
+<p>我们重新定义逻辑回归的代价函数为：</p>
+<blockquote>
+<p><img src="/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/2020040917441155.png" alt="这里是引用"><br>其中<img src="/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174445688.png" alt="在这里插入图片描述"><img src="/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174514183.png" alt="在这里插入图片描述"></p>
+</blockquote>
+<p>Python代码实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cost</span>(<span class="params">theta, X, y</span>):   </span><br><span class="line">	theta = np.matrix(theta)</span><br><span class="line">	X = np.matrix(X)</span><br><span class="line">	y = np.matrix(y)</span><br><span class="line">	first = np.multiply(-y, np.log(sigmoid(X* theta.T)))</span><br><span class="line">	second = np.multiply((<span class="number">1</span> - y), np.log(<span class="number">1</span> - sigmoid(X* theta.T)))</span><br><span class="line">	<span class="keyword">return</span> np.<span class="built_in">sum</span>(first - second) / (<span class="built_in">len</span>(X))</span><br></pre></td></tr></table></figure>
 
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>当文章需要添加图片时，将需要添加的图片放入同名的文件夹中，同时通过相对路径索引到该图片。</p>
-<p>例如我在上方修改博客配置中展示的那张图片的md源码为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![示例](./解决Hexo博客不显示图片的一种方法/1580801930220.png)</span><br></pre></td></tr></table></figure>
-
-<p>使用命令<code>hexo s</code>开启服务，若无报错在本地可以看到图片在博客中正确显示。</p>
-<p>相关链接: [解决Hexo博客不显示图片的一种方法](</p>
+<p>在得到这样一个代价函数以后，我们便可以用梯度下降算法来求得能使代价函数最小的参数了。算法为：<br><img src="/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174747831.png" alt="在这里插入图片描述"><br>求导后得到：<br><img src="/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174836976.png" alt="在这里插入图片描述"><br>我们定义了单训练样本的代价函数，凸性分析的内容是超出这门课的范围的，但是可以证明我们所选的代价值函数会给我们一个凸优化问题。代价函数会是一个凸函数，并且没有局部最优值。</p>
+<hr>
+<h2 id="2、推导过程"><a href="#2、推导过程" class="headerlink" title="2、推导过程"></a>2、推导过程</h2><p><img src="/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/20200409174955683.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>注：虽然得到的梯度下降算法表面上看上去与线性回归的梯度下降算法一样，但是这里的<br><img src="/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/2020040917503479.png" alt="在这里插入图片描述"></p>
+</blockquote>
+<p>与线性回归中不同，所以实际上是不一样的。另外，在运行梯度下降算法之前，进行特征缩放依旧是非常必要的。<br>一些梯度下降算法之外的选择： 除了梯度下降算法以外，还有一些常被用来令代价函数最小的算法，这些算法更加复杂和优越，而且通常不需要人工选择学习率，通常比梯度下降算法要更加快速。这些算法有：共轭梯度（Conjugate Gradient），局部优化法(Broyden fletcher goldfarb shann,BFGS)和有限内存局部优化法(LBFGS) </p>
 
     </div>
 
@@ -293,7 +318,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://codening99.github.io/2022/05/06/%E8%A7%A3%E5%86%B3Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95/" title="解决Hexo博客不显示图片的一种方法">https://codening99.github.io/2022/05/06/解决Hexo博客不显示图片的一种方法/</a>
+    <a href="https://codening99.github.io/2022/05/09/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/" title="逻辑回归代价函数的推导过程">https://codening99.github.io/2022/05/09/逻辑回归代价函数的推导过程/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -316,8 +341,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i># Hexo</a>
-              <a href="/tags/bug/" rel="tag"><i class="fa fa-tag"></i># bug</a>
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i># 机器学习</a>
+              <a href="/tags/%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/" rel="tag"><i class="fa fa-tag"></i># 公式推导</a>
           </div>
 
         
@@ -326,13 +351,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/06/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" rel="prev" title="常用工具">
-      <i class="fa fa-chevron-left"></i> 常用工具
+    <a href="/2022/05/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" rel="prev" title="机器学习笔记——矩阵的最小二乘法">
+      <i class="fa fa-chevron-left"></i> 机器学习笔记——矩阵的最小二乘法
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/05/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" rel="next" title="机器学习笔记——矩阵的最小二乘法">
-      机器学习笔记——矩阵的最小二乘法 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -391,7 +413,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BF%AE%E6%94%B9blog%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">1.修改blog配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%B8%8B%E8%BD%BD%E6%8F%92%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">2.下载插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">示例</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">1、代价函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">2、推导过程</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
